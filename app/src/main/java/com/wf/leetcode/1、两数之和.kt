@@ -21,6 +21,10 @@ fun main() {
 
     val index2 = planHash(num, target)
     println("[${index2[0]}, ${index2[1]}]")
+
+    val arr = intArrayOf(2, 7, 11, 15)
+    val index3 = planHash2(arr, target)
+    println("[${index3[0]}, ${index3[1]}]")
 }
 
 /**
@@ -54,6 +58,22 @@ fun planHash(num: Array<Int>, target: Int): Array<Int> {
             return arrayOf(map[sub] ?: throw IllegalArgumentException("No two sum solution"), index)
         }
         map[num[index]] = index
+    }
+    throw IllegalArgumentException("No two sum solution")
+}
+
+fun planHash2(num: IntArray, target: Int): IntArray {
+    val map = mutableMapOf<Int, Int>()
+    for((index, value) in num.withIndex()){
+        val sub = target - value
+        if(map.containsKey(sub)){
+            /*val result = IntArray(2)
+            result[0] = map[sub] ?: throw IllegalArgumentException("No two sum solution")
+            result[1] = index
+            return result*/
+            return intArrayOf(map[sub] ?: throw IllegalArgumentException("No two sum solution"), index)
+        }
+        map[value] = index
     }
     throw IllegalArgumentException("No two sum solution")
 }
