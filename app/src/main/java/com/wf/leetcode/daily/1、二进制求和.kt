@@ -91,13 +91,3 @@ fun sumBin3(bin1: String, bin2: String): String {
     }
     return result.toString()
 }
-
-
-
-
-
-
-
-
-
-
