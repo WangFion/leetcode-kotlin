@@ -1,5 +1,6 @@
 package com.wf.leetcode.daily
 
+import com.wf.leetcode.daily.entity.TreeNode
 import java.util.*
 
 /**
@@ -59,7 +60,7 @@ fun buildNode(nums: IntArray, start: Int, end: Int): TreeNode? {
         return null
     }
     val mid = (start + end) / 2
-    val root = TreeNode(nums[mid], null, null)
+    val root = TreeNode(nums[mid])
     root.left = buildNode(nums, start, mid - 1)
     root.right = buildNode(nums, mid + 1, end)
     return root
@@ -85,7 +86,7 @@ fun buildNode2(nums: IntArray, start: Int, end: Int): TreeNode? {
         return null
     }
     val mid = (start + end + 1) / 2
-    val root = TreeNode(nums[mid], null, null)
+    val root = TreeNode(nums[mid])
     root.left = buildNode(nums, start, mid - 1)
     root.right = buildNode(nums, mid + 1, end)
     return root
@@ -112,10 +113,8 @@ fun buildNode3(nums: IntArray, start: Int, end: Int): TreeNode? {
         return null
     }
     val mid = (start + end + Random().nextInt(2)) / 2
-    val root = TreeNode(nums[mid], null, null)
+    val root = TreeNode(nums[mid])
     root.left = buildNode(nums, start, mid - 1)
     root.right = buildNode(nums, mid + 1, end)
     return root
 }
-
-class TreeNode(var value: Int, var left: TreeNode?, var right: TreeNode?)
