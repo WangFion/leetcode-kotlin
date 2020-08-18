@@ -87,7 +87,7 @@ fun treeDepth(root: TreeNode?): Int {
 }
 
 /**
- * 线序遍历
+ * 先序遍历
  */
 fun preOrderTraverse(root: TreeNode?) {
     if (root == null) {
