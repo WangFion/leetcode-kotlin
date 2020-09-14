@@ -29,9 +29,9 @@ fun arrayToTree(arr: Array<out Int?>): TreeNode? {
     //3、遍历数组构建成树，跟节点的个数为 n/2 -1
     for (i in 0 until arr.size / 2) {
         //4、创建左节点，在数组中的位置为2 * i + 1
-        val left = arr[2 * i + 1]?.let { TreeNode(it) }
+        val left = if (2 * i + 1 > arr.size - 1) null else arr[2 * i + 1]?.let { TreeNode(it) }
         //5、创建右节点，在数组中的位置为2 * i + 2
-        val right = arr[2 * i + 2]?.let { TreeNode(it) }
+        val right = if (2 * i + 2 > arr.size - 1) null else arr[2 * i + 2]?.let { TreeNode(it) }
         //6、为跟节点添加左右子节点
         tree[i]?.left = left
         tree[i]?.right = right
@@ -122,19 +122,23 @@ fun endOrderTraverse(root: TreeNode?) {
 }
 
 fun main() {
-    val treeNode = arrayToTree(arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9))
-    println(treeToArray(treeNode).contentToString())
-    println(treeDepth(treeNode))
+    val treeNode1 = arrayToTree(arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9))
+    println(treeToArray(treeNode1).contentToString())
 
-    preOrderTraverse(treeNode)
+    val treeNode2 = arrayToTree(arrayOf(1, 2, 3, 4, 5, 6, 7, 8))
+    println(treeToArray(treeNode2).contentToString())
+
+    println(treeDepth(treeNode2))
+
+    preOrderTraverse(treeNode2)
     println()
     //1  2  4  8  9  5  3  6  7
 
-    inOrderTraverse(treeNode)
+    inOrderTraverse(treeNode2)
     println()
     //8  4  9  2  5  1  6  3  7
 
-    endOrderTraverse(treeNode)
+    endOrderTraverse(treeNode2)
     println()
     //8  9  4  5  2  6  7  3  1
 }
